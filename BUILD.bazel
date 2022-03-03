@@ -60,6 +60,26 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "raftlite_node_lib",
+    hdrs = glob([
+        "src/raftlite/node/*.h",
+        "src/raftlite/log_manager/*.h",
+        ]),
+    srcs = glob([
+        "src/raftlite/node/node.cc",
+        "src/raftlite/node/leader_log_manager.cc",
+        "src/log_manager/non_leader_log_manager.cc"]),
+    strip_include_prefix = "//src",
+    visibility = ["//visibility:public"],
+    deps = [
+        ":common_lib",
+        ":raftlite_common_lib",
+        ":rpc_cc_grpc",
+        "@com_github_grpc_grpc//:grpc++",
+        "@asio//:asio",
+    ],
+)
 
 cc_library(
     name = "metable_client_lib",

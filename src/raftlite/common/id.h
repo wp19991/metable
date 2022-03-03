@@ -3,7 +3,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "common/endpoint.h"
+#include "raftlite/common/endpoint.h"
 
 namespace metable {
 
